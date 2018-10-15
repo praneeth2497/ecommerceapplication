@@ -16,6 +16,9 @@
 </head>
 <body>
 <div class="container">
+<p class="text-muted" align="center">Category</p>
+</div>
+<div class="container">
 <sptags:form class="form-horizontal" action="addCategory"  method="post" commandName="cat">
 
 <div class="form-group">

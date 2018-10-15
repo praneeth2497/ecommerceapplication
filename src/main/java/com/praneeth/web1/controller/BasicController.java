@@ -14,27 +14,27 @@ import com.praneeth.web1.model.Product;
 @Controller
 public class BasicController {
 	@Autowired
-	ProductDao dao;
+	ProductDao productdao;
 @RequestMapping("/adminhome")
 public String m1()
 {
 	return "adminhome";
 }
 @RequestMapping("/user")
-public ModelAndView m2()
+public ModelAndView user()
 {
 	
-	  List proList=dao.getAllProducts();
-	ModelAndView mv=new ModelAndView("user","productInfo",proList);
+	  List proList=productdao.getAllProducts();
+	ModelAndView modelAndView=new ModelAndView("user","productInfo",proList);
 	
-	return mv;
+	return modelAndView;
 
 }
 @RequestMapping("/displayProduct")
 public ModelAndView diplayProduct(@RequestParam("proid")int productid)
 { 
-	Product	prod=dao.displayProduct(productid);
-	ModelAndView mv=new ModelAndView("displayProduct","pro",prod);
-	return mv;
+	Product	prod=productdao.displayProduct(productid);
+	ModelAndView modelAndView=new ModelAndView("displayProduct","pro",prod);
+	return modelAndView;
 }
 }

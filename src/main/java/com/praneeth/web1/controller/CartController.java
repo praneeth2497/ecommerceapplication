@@ -26,30 +26,32 @@ private static final String String = null;
 @Autowired
 CartDao cart;
 @Autowired
-ProductDao dao;
+ProductDao productdao;
 @Autowired
-HttpSession s;
+HttpSession httpSession;
 
 @RequestMapping("/SendToCart")
 	public ModelAndView cart(@RequestParam ("quantity")int quantity,@RequestParam("id")int id )
 	{
-	String un=(String)s.getAttribute("userId");
-cart.getAllCart(un);
+	String un=(String)httpSession.getAttribute("userId");
+//cart.getAllCart(un);
 		cart.sendToCart(quantity, id,un);
-	List proList=dao.getAllProducts();
-		ModelAndView mv=new ModelAndView("user","productInfo",proList);
-		return mv;
+	List proList=productdao.getAllProducts();
+		ModelAndView modelAndView=new ModelAndView("user","productInfo",proList);
+		return modelAndView;
 	}
 	@RequestMapping("/cart")
 	public ModelAndView cart1()
 	{
-		String un=(String)s.getAttribute("userId");
+		String un=(String)httpSession.getAttribute("userId");
 		
 		 List catList=cart.getAllCart(un);
 		
-		ModelAndView mv=new ModelAndView("cart","cartInfo",catList);
-		
-				return mv;
+		ModelAndView modelAndView=new ModelAndView("cart","cartInfo",catList);
+		long count=cart.cartCount(un);
+		httpSession.setAttribute("ordercount", count);
+		//System.out.println(count);
+				return modelAndView;
 	}
 	
 	

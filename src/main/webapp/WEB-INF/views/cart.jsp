@@ -25,7 +25,9 @@
         <th>quantity</th>
         <th>totalprice</th>
       </tr>
-<jscore:forEach items="${cartInfo}" var="ca">
+<jscore:forEach  items="${cartInfo}" var="ca" >
+
+<jscore:set var="payAmt" value="${payAmt+ca.totalPrice}" />
 
       <tbody>
       <tr>
@@ -43,5 +45,8 @@
 
 </div>
 
+<h1 align="center"> payableAmount=${payAmt}</h1>
+<a href="deleteCart?username=${ca.cartUser}">cancel order</a>
+<a  href="">confirm order</a>
 </body>
 </html>

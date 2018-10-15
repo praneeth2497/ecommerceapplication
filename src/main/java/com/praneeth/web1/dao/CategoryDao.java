@@ -7,7 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import com.praneeth.web1.model.Category;
 import com.praneeth.web1.model.Product;
-
+@Component
+@Repository
 public interface CategoryDao {
 boolean insert(Category category);
 List getAllCategory();

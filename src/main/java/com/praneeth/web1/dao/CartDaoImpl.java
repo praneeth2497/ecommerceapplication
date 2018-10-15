@@ -51,5 +51,33 @@ SessionFactory sessionFactory;
 		return cartList;
 	}
 
+
+	@Override
+	public void deleteCart(String username) {
+		//System.out.println("uname=========="+username);
+		Session session=sessionFactory.openSession();
+		Query query = session.createQuery("delete Cart where cartuser=:un");
+        query.setParameter("un", username);
+        query.executeUpdate();
+        org.hibernate.Transaction t=session.beginTransaction();
+        t.commit();
+        session.close();
+		
+	}
+
+
+	@Override
+	public long cartCount(String username) {
+		Cart cart=new Cart();
+		Session session=sessionFactory.openSession();
+		Query query=session.createQuery("select count(*) from Cart where cartuser=:un");
+		query.setParameter("un", username);
+		long count=(long)query.uniqueResult();
+		//Integer.parseInt(cart);
+		System.out.println("ordercount===="+count);
+		session.close();
+		return count;
 	
+	
+	}
 }

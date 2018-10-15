@@ -19,43 +19,43 @@ import com.praneeth.web1.model.Product;
 public class CategoryController {
 	
 	@Autowired
-	CategoryDao cdao;
+	CategoryDao categorydao;
 @RequestMapping("/categories")
 public ModelAndView m1()
 {
-	ModelAndView mv= new ModelAndView("showcategory","cat",new Category());
-	  List catList=cdao.getAllCategory();
-			mv.addObject("catInfo",catList);
+	ModelAndView modelAndView= new ModelAndView("showcategory","cat",new Category());
+	  List catList=categorydao.getAllCategory();
+			modelAndView.addObject("catInfo",catList);
 
-	return mv;
+	return modelAndView;
 }
 @RequestMapping("/addCategory")
 public ModelAndView saveCategory(@ModelAttribute("cat") Category cat)
 {
-    cdao.insert(cat);
-    List catList=cdao.getAllCategory();
-ModelAndView mv=new ModelAndView("showcategory","catInfo",catList);
-return mv;
+    categorydao.insert(cat);
+    List catList=categorydao.getAllCategory();
+ModelAndView modelAndView=new ModelAndView("showcategory","catInfo",catList);
+return modelAndView;
 }
 @RequestMapping("/deleteCategory")
 public ModelAndView deleteCategory(@RequestParam("catid")int categoryid)
 {
-	cdao.deleteCat(categoryid);
-	  List catList=cdao.getAllCategory();
-	  ModelAndView mv=new ModelAndView("showcategory","cat",new Category());
-		mv.addObject("catInfo",catList);
+	categorydao.deleteCat(categoryid);
+	  List catList=categorydao.getAllCategory();
+	  ModelAndView modelAndView=new ModelAndView("showcategory","cat",new Category());
+		modelAndView.addObject("catInfo",catList);
 
-	return mv;
+	return modelAndView;
 }
 @RequestMapping("/editCategory")
 public ModelAndView editCategory(@RequestParam("catid")int categoryid)
 {
-Category	cat=cdao.editCat(categoryid);
-	  List catList=cdao.getAllCategory();
-	  ModelAndView mv=new ModelAndView("showcategory","cat",cat);
-		mv.addObject("catInfo",catList);
+Category	cat=categorydao.editCat(categoryid);
+	  List catList=categorydao.getAllCategory();
+	  ModelAndView modelAndView=new ModelAndView("showcategory","cat",cat);
+		modelAndView.addObject("catInfo",catList);
 
-	return mv;
+	return modelAndView;
 }
 
 }

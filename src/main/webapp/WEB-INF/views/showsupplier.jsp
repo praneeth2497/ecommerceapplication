@@ -16,6 +16,9 @@
 </head>
 <body>
 <div class="container">
+<p class="text-muted" align="center">Supplier</p>
+</div>
+<div class="container">
 <sptags:form class="form-horizontal" action="addSupplier"  method="post" commandName="sup">
 
 <div class="form-group">

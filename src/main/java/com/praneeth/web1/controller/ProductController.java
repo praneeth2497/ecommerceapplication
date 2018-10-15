@@ -14,60 +14,68 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.praneeth.web1.dao.CategoryDao;
 import com.praneeth.web1.dao.ProductDao;
+import com.praneeth.web1.dao.SupplierDao;
 import com.praneeth.web1.model.Product;
 
 @Controller
 public class ProductController {
 @Autowired
-ProductDao dao;
-	
-	
+ProductDao productdao;
+	@Autowired
+	CategoryDao categoryDao;
+	@Autowired
+	SupplierDao supplierDao;
 	@RequestMapping("/products")
 	public ModelAndView proInfo()
 	{
-		ModelAndView mv= new ModelAndView("showproducts","pro",new Product());
-		  List proList=dao.getAllProducts();
-		mv.addObject("productInfo",proList);
-		return mv;
+		ModelAndView modelAndView= new ModelAndView("showproducts","pro",new Product());
+		List catList =categoryDao.getAllCategory();
+		  List proList=productdao.getAllProducts();
+		 List supList= supplierDao.getAllSupplier();
+		modelAndView.addObject("productInfo",proList);
+		modelAndView.addObject("catInfo",catList);
+		modelAndView.addObject("supInfo",supList);
+		return modelAndView;
 	}
 	@RequestMapping(value="/addProduct",method=RequestMethod.POST)
     public ModelAndView saveProduct(@ModelAttribute("pro") Product pro)throws Exception
     {
 	pro.setId((int)(Math.random()*10000));
-	int id=pro.getId();
+//	int id=pro.getId();
 		MultipartFile proimg=pro.getProductImage();
 		
-		File f=new File("H:\\projecteclipse\\mavenweb\\src\\main\\webapp\\resources\\"+String.valueOf(id)+".jpg");
+		File f=new File("H:\\projecteclipse\\mavenweb\\src\\main\\webapp\\resources\\"+pro.getId()+".jpg");
 		
 		FileOutputStream fos=new FileOutputStream(f);
 		
 		BufferedOutputStream bos=new BufferedOutputStream(fos);
 		bos.write(proimg.getBytes());
-        dao.insert(pro);
-        List proList=dao.getAllProducts();
-    ModelAndView mv=new ModelAndView("showproducts","productInfo",proList);
-    return mv;
+        productdao.insert(pro);
+        List proList=productdao.getAllProducts();
+    ModelAndView modelAndView=new ModelAndView("showproducts","productInfo",proList);
+    return modelAndView;
     }
 	@RequestMapping("/deleteProduct")
 	public ModelAndView deleteProduct(@RequestParam("proid")int productid)
 	{
-		dao.deletePro(productid);
-		  List proList=dao.getAllProducts();
-		  ModelAndView mv=new ModelAndView("showproducts","pro",new Product());
-			mv.addObject("productInfo",proList);
+		productdao.deletePro(productid);
+		  List proList=productdao.getAllProducts();
+		  ModelAndView modelAndView=new ModelAndView("showproducts","pro",new Product());
+			modelAndView.addObject("productInfo",proList);
 
-		return mv;
+		return modelAndView;
 	}
 	@RequestMapping("/editProduct")
 	public ModelAndView editProduct(@RequestParam("proid")int productid)
 	{
-	Product	prod=dao.editPro(productid);
-		  List proList=dao.getAllProducts();
-		  ModelAndView mv=new ModelAndView("showproducts","pro",prod);
-			mv.addObject("productInfo",proList);
+	Product	prod=productdao.editPro(productid);
+		  List proList=productdao.getAllProducts();
+		  ModelAndView modelAndView=new ModelAndView("showproducts","pro",prod);
+			modelAndView.addObject("productInfo",proList);
 
-		return mv;
+		return modelAndView;
 	}
 
 	

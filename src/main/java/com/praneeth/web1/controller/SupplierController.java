@@ -17,28 +17,28 @@ import com.praneeth.web1.model.Supplier;
 public class SupplierController {
 	
 	@Autowired
-	SupplierDao sdao;
+	SupplierDao supplierdao;
 	@RequestMapping("/supplier")
 	public ModelAndView m1()
 	{
 		ModelAndView mv= new ModelAndView("showsupplier","sup",new Supplier());
-		List supList=sdao.getAllSupplier();
+		List supList=supplierdao.getAllSupplier();
 		mv.addObject("supInfo",supList);
 		return mv;
 	}
 	@RequestMapping("/addSupplier")
 	public ModelAndView saveProduct(@ModelAttribute("sup") Supplier sup)
 	{
-	   sdao.insert(sup); 
-	   List supList=sdao.getAllSupplier();
+	   supplierdao.insert(sup); 
+	   List supList=supplierdao.getAllSupplier();
 	ModelAndView mv=new ModelAndView("showsupplier","supInfo",supList);
 	return mv;
 	}
 	@RequestMapping("/deleteSupplier")
 	public ModelAndView deleteCategory(@RequestParam("supid")int supplierid)
 	{
-		sdao.deleteSup(supplierid);
-		  List supList=sdao.getAllSupplier();
+		supplierdao.deleteSup(supplierid);
+		  List supList=supplierdao.getAllSupplier();
 		  ModelAndView mv=new ModelAndView("showsupplier","sup",new Supplier());
 			mv.addObject("supInfo",supList);
 
@@ -47,8 +47,8 @@ public class SupplierController {
 	@RequestMapping("/editSupplier")
 	public ModelAndView editProduct(@RequestParam("supid")int supplierid)
 	{
-	Supplier	sup=sdao.editSup(supplierid);
-		  List supList=sdao.getAllSupplier();
+	Supplier	sup=supplierdao.editSup(supplierid);
+		  List supList=supplierdao.getAllSupplier();
 		  ModelAndView mv=new ModelAndView("showsupplier","sup",sup);
 			mv.addObject("supInfo",supList);
 

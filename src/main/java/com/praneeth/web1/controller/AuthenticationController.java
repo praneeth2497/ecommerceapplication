@@ -21,9 +21,9 @@ import com.praneeth.web1.model.Register;
 @Controller
 public class AuthenticationController {
 	@Autowired
-	RegisterDao rdao;
+	RegisterDao registerdao;
 	@Autowired
-	loginDao ldao;
+	loginDao logindao;
 @RequestMapping("/register")
 	public ModelAndView register()
 {
@@ -33,7 +33,7 @@ return mv;
 @RequestMapping("/registerUser")
 public ModelAndView registerUser(@ModelAttribute("register") Register reg)
 {
-	rdao.registerUser(reg);
+	registerdao.registerUser(reg);
 ModelAndView mv=new ModelAndView("home");
 return mv;
 }
@@ -46,7 +46,7 @@ public ModelAndView loginUser()
 //@RequestMapping("/checkLogin")
 public ModelAndView checkLogin(@RequestParam("email")String email,@RequestParam("password")String password)
 {
-	ldao.loginCheck(email, password);
+	logindao.loginCheck(email, password);
 	ModelAndView mv=new ModelAndView("login");
 	return mv;
 	
@@ -64,7 +64,7 @@ public String login_session_attributes(HttpSession session,Model model) {
  System.out.println("email ========");
     String email = SecurityContextHolder.getContext().getAuthentication().getName();
    System.out.println("email ========"+email);
-    Register  user = rdao.getUser(email);
+    Register  user = registerdao.getUser(email);
     System.out.println("username ========"+user.getRole());
     session.setAttribute("userId", user.getUserName());
     session.setAttribute("name", user.getPassword());

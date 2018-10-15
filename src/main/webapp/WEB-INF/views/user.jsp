@@ -27,11 +27,15 @@
  <li class="nav-item active">
 <a class="nav-link" href="login"> Login</a>
 </li>
+<li class="nav-item active">
+<a class="nav-link" href="logout">Logout</a>
+  </li>
 </ul>
 <ul class="nav navbar-nav navbar-right">
  <li class="nav-item active">
-<a class="nav-link" href="cart"><img src="resources/cartimage.png" width="50px" height="50"></a>
+<a class="nav-link" href="cart"><img src="resources/cartimage.png" width="50px" height="50"><% session.getAttribute("ordercount"); %></a>
 </li>
+ 
 </ul>
 </nav>
 <div class="container">
@@ -41,7 +45,10 @@
         <th>productid</th>
         <th>productname</th>
         <th>productprice</th>
-        
+         <th>productdescription</th>
+          <th>categoryname</th>
+           <th>suppliername</th>
+            <th>stock</th>
         <th>showmoredetails</th>
         
       </tr>
@@ -52,8 +59,11 @@
 <td>${p.id }</td>
 <td>${p.name}</td>
 <td>${p.price}</td>
-
-<td><a href="displayProduct?proid=${p.id }" ><img src="resources/${p.id }.jpg" width="100px" height="100"></a></td>
+<td>${p.productDescription}</td>
+<td>${p.categoryName}</td>
+<td>${p.supplierName}</td>
+<td>${p.stock}</td>
+<td><a href="displayProduct?proid=${p.id}" ><img src="resources/${p.id}.jpg" width="100px" height="100"></a></td>
 
 </jscore:forEach>
 </tr>

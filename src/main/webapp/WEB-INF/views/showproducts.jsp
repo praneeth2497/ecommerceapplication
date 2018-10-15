@@ -21,6 +21,9 @@
 </head>
 <body >
 <div class="container">
+<p class="text-muted" align="center">Product Form</p>
+</div>
+<div class="container">
 <sptags:form class="form-horizontal" action="addProduct"  method="post" commandName="pro" enctype="Multipart/form-data">
 
 <div class="form-group">
@@ -43,14 +46,31 @@
 </div>
 <div class="form-group">
 <label class="col-sm-offset-2 control-label col-sm-2" for="categoryname">CategoryName</label>
+
+  
 <div class="col-sm-4">
-<sptags:input path="categoryName" class="form-control" placeholder="Entercategory"/>
+
+
+
+
+      
+<sptags:select path="categoryName" class="form-control" placeholder="Entercategory">
+<jscore:forEach items="${catInfo}" var="c">
+<option value="${c.catName} ">${c.catName}</option>
+</jscore:forEach>
+</sptags:select>
 </div>
 </div>
+
+
 <div class="form-group">
 <label class="col-sm-offset-2 control-label col-sm-2" for="suppliername">SupplierName</label>
 <div class="col-sm-4">
-<sptags:input path="supplierName" class="form-control" placeholder="Entersuppliername"/>
+<sptags:select path="supplierName" class="form-control" placeholder="Entersuppliername">
+<jscore:forEach items="${supInfo}" var="s">
+<option value="${s.supplierName} ">${s.supplierName}</option>
+</jscore:forEach>
+</sptags:select>
 </div>
 </div>
 <div class="form-group">
