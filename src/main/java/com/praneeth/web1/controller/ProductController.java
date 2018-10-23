@@ -46,15 +46,21 @@ ProductDao productdao;
 //	int id=pro.getId();
 		MultipartFile proimg=pro.getProductImage();
 		
-		File f=new File("H:\\projecteclipse\\mavenweb\\src\\main\\webapp\\resources\\"+pro.getId()+".jpg");
+		File f=new File("H:\\projecteclipse\\mavenweb\\src\\main\\webapp\\resources\\"+String.valueOf(pro.getId())+".jpg");
 		
 		FileOutputStream fos=new FileOutputStream(f);
 		
 		BufferedOutputStream bos=new BufferedOutputStream(fos);
-		bos.write(proimg.getBytes());
+		byte imgarr[];
+		imgarr=proimg.getBytes();
+		System.out.println(imgarr.length);
+		bos.write(imgarr);
+		bos.flush();
+		bos.close();
         productdao.insert(pro);
         List proList=productdao.getAllProducts();
     ModelAndView modelAndView=new ModelAndView("showproducts","productInfo",proList);
+    
     return modelAndView;
     }
 	@RequestMapping("/deleteProduct")

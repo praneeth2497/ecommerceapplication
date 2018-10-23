@@ -117,9 +117,9 @@
 <td>${p.categoryName}</td>
 <td>${p.supplierName}</td>
 <td>${p.stock}</td>
-<td><img src="resources/${p.id }.jpg" width="100px" height="100"/></td>
-<td><a href="editProduct?proid=${p.id }" class="text-light" >edit</a></td>
-<td><a href="deleteProduct?proid=${p.id }" class="text-light">delete</a></td>
+<td><img src="resources/${p.id}.jpg" width="100px" height="100"/></td>
+<td><a href="editProduct?proid=${p.id}" class="text-light" >edit</a></td>
+<td><a href="deleteProduct?proid=${p.id}" class="text-light">delete</a></td>
 </jscore:forEach>
 </tr>
 </tbody>

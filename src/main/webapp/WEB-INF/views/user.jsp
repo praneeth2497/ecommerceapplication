@@ -56,14 +56,14 @@
 
       <tbody>
       <tr>
-<td>${p.id }</td>
+<td>${p.id}</td>
 <td>${p.name}</td>
 <td>${p.price}</td>
 <td>${p.productDescription}</td>
 <td>${p.categoryName}</td>
 <td>${p.supplierName}</td>
 <td>${p.stock}</td>
-<td><a href="displayProduct?proid=${p.id}" ><img src="resources/${p.id}.jpg" width="100px" height="100"></a></td>
+<td><a href="displayProduct?proid=${p.id}" ><img src="resources/${p.id}.jpg" width="100px" height="100"/></a></td>
 
 </jscore:forEach>
 </tr>

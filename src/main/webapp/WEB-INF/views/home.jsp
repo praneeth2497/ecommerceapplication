@@ -29,10 +29,29 @@
   
 </head>
 <body>
-<div class="jumbotron text-center" style="margin-bottom:0">
+<img src="resources/pipe1.jpg"/ width="1350" height="350">
+<br>
+<br>
+<div class="container">
+<div class="jumbotron text-center"  style="margin-bottom:0">
+
+  <div class="container">
+  <div class="row">
+  <div class="col-sm-4">
+ <img src="resources/gif.webp"/>
+  </div>
+  <div class="col-sm-8">
+  <br>
+  <br>
   <p  class="text-primary">HARDWARE MART</p>
+  
   <p class="text-danger">you can purchase all household hardware products here...!!</p> 
 </div>
+</div>
+</div>
+</div>
+</div>
+<br>
 <div class="container">
 <nav class="navbar navbar-inverse">
  <ul class="nav navbar-nav">
@@ -70,19 +89,19 @@
     <div class="carousel-inner" role="listbox">
 
       <div class="item active">
-        <img src="resources/washbasin 2.jpg" alt="Chania" width="460" height="345">
+        <img src="resources/prayag3.jpg" alt="Chania" width="460" height="345">
         <div class="carousel-caption">
-          <h3>Chania</h3>
-          <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+          <h3>Pipes And Fittings</h3>
+          <p>used in washareas</p>
         </div>
       </div>
 
     
       <div class="item">
-        <img src="resources/download 2.jpg" alt="Flower" width="460" height="345">
+        <img src="resources/prayag1.jpg" alt="Flower" width="460" height="345">
         <div class="carousel-caption">
-          <h3>Flowers</h3>
-          <p>Beautiful flowers in Kolymbari, Crete.</p>
+          <h3>Pipes And Fittings</h3>
+          <p>All kinds of sanitary ware</p>
         </div>
       </div>
   
@@ -102,5 +121,10 @@
 
  
     </div>
+    <div class="jumbotron text-center" style="margin-bottom:0">
+  <H2>Our Values</H2>
+  <p class="text-danger">TO Provide the best quality and stainless steel sanitary products and pipe fittings And we also make faucets,sink,sanitaryware,pipes and cockroach traps.</p>
+<H2>Trust only the best..!!<img src="resources/smily2.png" width="70" height="70"/></H2>
+</div>
 </body>
 </html>

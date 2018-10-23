@@ -18,6 +18,9 @@
   <li class="nav-item active">
 <a class="nav-link" href="supplier.html"> supplier</a>
   </li>
+   <li class="nav-item active">
+<a class="nav-link" href="logout">Logout</a>
+  </li>
 </ul>
 </nav>
 </body>
